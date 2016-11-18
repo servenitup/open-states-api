@@ -1,4 +1,4 @@
-#possible urls
+#possible urls below; api written using the last one
 
 #this one lists active Missouri legislators
 #'http://openstates.org/api/v1/legislators/?state=mo&active=true'
@@ -6,7 +6,7 @@
 #this one lists bills introduced in the senate in 2016
 #'http://openstates.org/api/v1/bills/?state=mo&chamber=upper&session=2016'
 
-#lists bills introduced in the house in 2016 related to health; no subjects were listed for senate bills
+#this one lists bills introduced in the house in 2016 related to health; no subjects were listed for senate bills
 #'http://openstates.org/api/v1/bills/?state=mo&subject=Health&search_window=session:2016'
 
 import json
@@ -20,9 +20,8 @@ r = requests.get(url)
 response_data = r.content
 
 data = json.loads(response_data)
-#add new url statement that codes for specific ids?
+#I tried adding a new url statement that looked for specific ids and actions of bills, then wrote outcome and response statements for that url. But that didn't work. Keeping it below so I don't do that again.
 #http = 'http://openstates.org/api/v1/bills/?state=mo&q=Health'
-
 #outcome = requests.get(http)
 #response = outcome.content
 
