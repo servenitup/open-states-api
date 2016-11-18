@@ -1,0 +1,37 @@
+#possible urls
+
+#this one lists active Missouri legislators
+#'http://openstates.org/api/v1/legislators/?state=mo&active=true'
+
+#this one lists bills introduced in the senate in 2016
+#'http://openstates.org/api/v1/bills/?state=mo&chamber=upper&session=2016'
+
+#lists bills introduced in the house in 2016 related to health; no subjects were listed for senate bills
+#'http://openstates.org/api/v1/bills/?state=mo&subject=Health&search_window=session:2016'
+
+import json
+import requests
+
+#need url
+url = 'http://openstates.org/api/v1/bills/?state=mo&subject=Health&search_window=session:2016'
+
+r = requests.get(url)
+
+response_data = r.content
+
+data = json.loads(response_data)
+#add new url statement that codes for specific ids?
+#http = 'http://openstates.org/api/v1/bills/?state=mo&q=Health'
+
+#outcome = requests.get(http)
+#response = outcome.content
+
+for result in data:
+    print result['bill_id']
+    print result['title']
+    print result['session']
+    for result in data:
+        actions = ['latest']
+        if actions in ['actions', 'action', 'action_dates']:
+                print()
+    print '-----'
