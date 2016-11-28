@@ -20,17 +20,14 @@ r = requests.get(url)
 response_data = r.content
 
 data = json.loads(response_data)
-#I tried adding a new url statement that looked for specific ids and actions of bills, then wrote outcome and response statements for that url. But that didn't work. Keeping it below so I don't do that again.
-#http = 'http://openstates.org/api/v1/bills/?state=mo&q=Health'
-#outcome = requests.get(http)
-#response = outcome.content
 
-for result in data:
-    print result['bill_id']
-    print result['title']
-    print result['session']
-    for result in data:
-        actions = ['latest']
-        if actions in ['actions', 'action', 'action_dates']:
-                print()
+for bill in data:
+    bill_id = bill['bill_id']
+    http = 'http://openstates.org/api/v1/bills/mo/2016' + bill_id
+    outcome = requests.get(http)
+    response = outcome.content
+    
+    print bill['title']
+    print detail_data['actions'][-1]['action']
+    
     print '-----'
